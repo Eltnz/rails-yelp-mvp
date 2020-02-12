@@ -1,10 +1,36 @@
-<h1><%= @restaurant.name %></h1>
-<ul>
-  <li><%= @restaurant.address %></li>
-  <li><%= @restaurant.category %></li>
-  <li><%= @restaurant.phone_number %></li>
-  <li><%= @restaurant.reviews %></li>
-</ul>
 
-<br>
-<%= link_to "All restaurants", restaurants_path %>
+<div class= container>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag "https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "card-img-top" %>
+    <div class="card-body text-center">
+      <h5 class="card-title"><%= @restaurant.name %></h5>
+      <p class="card-text">
+        <% if @reviews.empty? == false %>
+          <ul class="list-group">
+            <h6>Rewiews</h6>
+            <% @reviews.each do |review| %>
+            <li class="list-group-item"> <%= review.content %> - <%= review.rating %>/5</li>
+          </ul>
+        <% end %>
+        <% else %>
+          <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary text-center" %>
+        <% end %>
+        </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Address: <%= @restaurant.address %></li>
+      <li class="list-group-item">Cuisine: <%= @restaurant.category %></li>
+      <li class="list-group-item">Phone number: <%= @restaurant.phone_number %></li>
+    </ul>
+  </div>
+
+  <br>
+    <div >
+      <% if @reviews.empty? == false %>
+        <%= link_to "All restaurants", restaurants_path, class: "btn btn-primary" %>
+        <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "All restaurants", restaurants_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+</div>

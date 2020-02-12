@@ -1,10 +1,27 @@
-<h1>Welcome to TripAdvisor</h1>
+<div class=container>
+  <h1>Welcome to TripAdvisor</h1>
 
-<ul>
-  <% @restaurants.each do |restaurant| %>
-    <li><%= link_to restaurant.name.capitalize, restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
 
-<br>
-<%= link_to "Add a restaurant", new_restaurant_path %>
+      <% @restaurants.each do |restaurant| %>
+
+      <div class="card" style="width: 18rem;">
+      <%= image_tag "https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", class: "card-img-top" %>
+        <h2><%= restaurant.name.capitalize %></h2>
+        <%= link_to "Discover", restaurant_path(restaurant), class: "btn btn-primary" %>
+      </div>
+      <% end %>
+
+
+  <br>
+  <%= link_to "Add a restaurant", new_restaurant_path %>
+</div>
+
+
+<!-- <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Discover</a>
+  </div>
+</div> -->
