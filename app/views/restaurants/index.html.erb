@@ -1,0 +1,10 @@
+<h1>Welcome to TripAdvisor</h1>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li><%= link_to restaurant.name.capitalize, restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+
+<br>
+<%= link_to "Add a restaurant", new_restaurant_path %>
